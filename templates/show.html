@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body style=" background-image: url('https://cdn4.vectorstock.com/i/1000x1000/11/53/sale-banner-design-paint-stroke-background-vector-19371153.jpg');">
+    <center>
+        <h1>PRODUCT DETAILS</h1>
+        <table border="2px">
+            <thead>
+               
+                <th scope="col">PRODUCT NAME</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">IMAGE</th>
+                <th scope="col">ACTION</th>
+            </thead>
+            {% for p in prdts %}
+            <tr>
+                <td>{{p.product_name}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.quantity}}</td>
+                <td>
+                    
+                    {{p.image}}<br>
+                    {% if p.image %}
+                        <img src="{{ p.image.url }}">
+                    {% endif %}
+                </td>
+                <td>
+                    <a rol="button"  href="{% url 'editpage' p.id %}">EDIT</a>
+                
+                    <a rol="button"  href="{% url 'delete' p.id %}">DELETE</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
